@@ -2,12 +2,13 @@
 #Speedtest.net test
 {% if grains['os'] == 'FreeBSD' %}
 mpd5:
-  pkg.installed
+  pkg:
+    - installed
   service:
-    - running
-    - enable: True
-    - watch:
-      - file: /usr/local/etc/mpd5/mpd.conf
+      - running
+      - enable: True
+      - watch:
+        - file: /usr/local/etc/mpd5/mpd.conf
 
 /usr/local/etc/mpd5/mpd.conf:
   file.managed:
